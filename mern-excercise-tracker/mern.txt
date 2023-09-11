@@ -1,0 +1,4 @@
+username: databaseaz
+password: 5TpepapabtvbOFG6
+
+mongodb+srv://databaseaz:5TpepapabtvbOFG6@cluster0.buoqtfa.mongodb.net/
