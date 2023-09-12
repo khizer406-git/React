@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 const Location = () => {
   const {dispatch,expenses,budget,Location } = useContext(AppContext);
   const [state,setState] = useState('(£) Pound');
+  const upperlimit = 9999999;
 
     const changeLocation = (val)=>{
             setState(val);
@@ -33,7 +34,7 @@ const Location = () => {
               id='cost'
               value={budget}
               style={{size: 10}}
-              onChange={(event) => event.target.value>=spent && event.target.value<=20000 ? changeBudget(event.target.value): event.target.value<=spent ? alert("Cannot reduce Budget Lower than spending") : alert("Cannot exceed Budget greater than 20000")}>
+              onChange={(event) => event.target.value>=spent && event.target.value<=upperlimit ? changeBudget(event.target.value): event.target.value<=spent ? alert("Cannot reduce Budget Lower than spending") : alert("Cannot exceed Budget greater than" + upperlimit)}>
             </input>
           </span>
           <span className='alert alert-success mx-0 'style={{justifyContent:'center',alignItems:'center',display:'flex'}}>

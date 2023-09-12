@@ -40,7 +40,7 @@ const ExpenseItem = (props) => {
         <td>{Location}{parseInt(props.unitprice)}</td>
         <td><FaPlusCircle size='2.2em' color="green" onClick={()=>handleChange(10)}></FaPlusCircle></td>
         <td><FaMinusCircle size='2.2em' color="darkred" onClick={()=>handleChange(-10)}></FaMinusCircle></td>
-        <td><FaTimesCircle size='1em' color="gray" onClick={handleDeleteItem}></FaTimesCircle></td>
+        <td><FaTimesCircle size='2.2em' color="gray" onClick={()=>handleDeleteItem()}></FaTimesCircle></td>
         </tr>
     );
 };

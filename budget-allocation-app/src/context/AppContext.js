@@ -40,9 +40,10 @@ export const AppReducer = (state, action) => {
                     let Budget = state.budget
                     state.expenses.map((expense)=>{
                         if(expense.name === action.payload.name) {
-                            if(spent+action.payload.price <= Budget)
+                            if(spent+action.payload.price <= Budget){
                                 expense.unitprice = expense.unitprice + action.payload.price;
-                            else{
+                                console.log(action.payload)
+                            }else{
                                 alert("The Value Cannot exceed remaining Funds")
                             }
                         }
@@ -69,26 +70,33 @@ export const AppReducer = (state, action) => {
                 action.type = "DONE";
                 return {
                     ...state,
-                };    
+                };
+                case 'ADD_ITEM':
+                    new_expenses = state.expenses.map((expense)=>{
+                        return expense 
+                    })
+                    new_expenses.push(action.payload)
+                    state.expenses = new_expenses;
+                    action.type = "DONE";
+                    return {
+                        ...state,
+                    };
         case 'DELETE_ITEM':
-            state.expenses.map((expense)=>{
-                if(expense.name === action.payload.name) {
-                    expense.quantity = 0;
-                }
-                new_expenses.push(expense);
-                return true;
+            new_expenses = state.expenses.filter((expense)=>{
+                return expense.name !== action.payload.name 
             })
             state.expenses = new_expenses;
             action.type = "DONE";
             return {
                 ...state,
             };
-    case 'CHG_LOCATION':
-            action.type = "DONE";
-            state.Location = action.payload;
-            return {
-                ...state
-            }
+
+        case 'CHG_LOCATION':
+                action.type = "DONE";
+                state.Location = action.payload;
+                return {
+                    ...state
+                }
 
         default:
             return state;
@@ -108,11 +116,11 @@ export const AppReducer = (state, action) => {
 // 1. Sets the initial state when the app loads
 const initialState = {
     expenses: [
-        { id: "Shirt", name: 'Marketing', quantity: 0, unitprice: 50 },
-        { id: "Jeans", name: 'Finance', quantity: 0, unitprice: 300 },
-        { id: "Dress", name: 'Sales', quantity: 0, unitprice: 70 },
-        { id: "Dinner set", name: 'Human Resource', quantity: 0, unitprice: 40 },
-        { id: "Bags", name: 'IT', quantity: 0, unitprice: 500 },
+        { id: "Marketing", name: 'Marketing', quantity: 0, unitprice: 50 },
+        { id: "Finance", name: 'Finance', quantity: 0, unitprice: 300 },
+        { id: "Sales", name: 'Sales', quantity: 0, unitprice: 70 },
+        { id: "Human Resource", name: 'Human Resource', quantity: 0, unitprice: 40 },
+        { id: "IT", name: 'IT', quantity: 0, unitprice: 500 },
     ],
     Location: '£',
     budget: 20000,

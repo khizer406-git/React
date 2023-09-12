@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const ItemSelected = (props) => {
-    const { dispatch,Location} = useContext(AppContext);
+    const { dispatch,Location,expenses} = useContext(AppContext);
 
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState('');
@@ -13,17 +13,18 @@ const ItemSelected = (props) => {
 
         const item = {
             name: name,
-            quantity: parseInt(quantity),
+            price: parseInt(quantity),
         };
 
         if(action === "Reduce") {
+            item.price= item.price*-1
             dispatch({
-                type: 'RED_QUANTITY',
+                type: 'RED_PRICE',
                 payload: item,
             });
         } else {
                 dispatch({
-                    type: 'ADD_QUANTITY',
+                    type: 'ADD_PRICE',
                     payload: item,
                 });
             }
@@ -32,20 +33,16 @@ const ItemSelected = (props) => {
     return (
         <div>
             <div className='row'>
-
             <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
                     <div className="input-group-prepend">
                 <label className="input-group-text" htmlFor="inputGroupSelect01">Items</label>
                 </div>
-                  <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
+                <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
                         <option defaultValue>Choose...</option>
-                        <option value="Shirt" name="Shirt"> Marketing</option>
-                <option value="Dress" name="Dress">Finance</option>
-                <option value="Jeans" name="Jeans">Sales</option>
-                <option value="Dinner set" name="Dinner set">Human Resource</option>
-                <option value="Bags" name="Bags">IT</option>
+                        {expenses.map((expense)=> 
+                            <option key={Math.random()}value={expense.id} name={expense.name}>{expense.name}</option>    
+                        )}
                   </select>
-
                     <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
                 <label className="input-group-text" htmlFor="inputGroupSelect02">Allocation</label>
                 </div>
