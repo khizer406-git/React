@@ -25,7 +25,7 @@ const Location = () => {
     
 
   return (
-        <div style={{display:'grid',gridTemplateColumns: 'repeat(1,2fr 1fr 1fr 1fr)',gap:50}}>
+        <div style={{display:'grid',gridTemplateColumns: 'repeat(1,1.5fr 1fr 1fr 1fr)',gap:50,justifyContent:'center',alignItems:'center'}}>
           <span className='alert alert-secondary mx-0'>
             Budget: &nbsp;&nbsp;&nbsp;&nbsp;{Location}&nbsp;
             <input
@@ -41,11 +41,11 @@ const Location = () => {
               Remaining: {Location}&nbsp;{budget-expenses.reduce((prev,e)=>prev+e.unitprice,0)}
 
           </span>
-          <span className='alert alert-primary'>
+          <span className='alert alert-primary' style={{justifyContent:'center',alignItems:'center',display:'flex'}}>
             Spent so far {Location}&nbsp;{expenses.reduce((prev,e)=>prev+e.unitprice,0)}
           </span>
 
-        <div className="currency-label mx-0 alert alert-success" style={{ backgroundColor: 'lightgreen', borderColor: 'lightgreen', display: 'inline-block', position: 'relative' }}>
+        <div className="currency-label mx-0 alert alert-success" style={{ backgroundColor: 'lightgreen', borderColor: 'lightgreen', position: 'relative',justifyContent:'center',alignItems:'center',display:'flex' }}>
           Currency {state}
           <select
             className='alert alert-success'
