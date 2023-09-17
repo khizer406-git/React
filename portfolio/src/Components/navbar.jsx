@@ -8,7 +8,7 @@ const Navbar = () => {
     window.onscroll = () => {
       const currentScrollPos = window.pageYOffset;
       if (prevScrollPos > currentScrollPos) {
-        // Scrolling up, show the navbar
+        // Scrolling up, show the navbar  
         setNavbarTransform('translateY(0)');
       } else {
         // Scrolling down, hide the navbar

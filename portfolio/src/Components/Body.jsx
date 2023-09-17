@@ -6,16 +6,14 @@ import Coming from '../picture/Coming.jpg';
 const Body = () => {
   const styles = {
     imageLink: {
-      width: '100%',
-      height: '100%',
       display: 'flex',
-      justifyContent: 'center',
       alignItems: 'center',
+      justifyContent: 'center',
       overflow: 'hidden', // Hide overflowing content
     },
     image: {
       maxWidth: '100%',
-      height: 'auto',
+      height: '100%',
       transition: 'transform 0.3s ease', // Add transition for smoother effect with ease timing function
     },
   };
